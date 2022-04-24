@@ -23,5 +23,14 @@ jobs:
         with:
           node-version: 16
 
-      - name: 3. Compile, Build and Test
+      - name: 3. Code Analysis - White-box testing (SAST)
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
+          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_URL: ${{ secrets.SONAR_URL }}
+        run: sh ./codeAnalysis.sh
+
+      - name: 4. Compile, Build and Test
         run: sh ./build.sh
