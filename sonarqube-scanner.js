@@ -5,6 +5,7 @@ scanner({
     token: `${process.env.SONAR_TOKEN}`,
     options: {
         "sonar.sources": "./src",
+        "sonar.organization": `${process.env.SONAR_ORGANIZATION}`,
         "sonar.projectKey": `${process.env.SONAR_PROJECT_KEY}`,
         "sonar.exclusions": "**/*.test.tsx",
         "sonar.tests": "./src",
