@@ -1,11 +1,11 @@
 const scanner = require('sonarqube-scanner');
 
 scanner({
-    serverUrl: `${SONAR_URL}`,
-    token: `${SONAR_TOKEN}`,
+    serverUrl: `${process.env.SONAR_URL}`,
+    token: `${process.env.SONAR_TOKEN}`,
     options: {
         "sonar.sources": "./src",
-        "sonar.projectKey": `${SONAR_PROJECT_KEY}`,
+        "sonar.projectKey": `${process.env.SONAR_PROJECT_KEY}`,
         "sonar.exclusions": "**/*.test.tsx",
         "sonar.tests": "./src",
         "sonar.test.inclusions": "**/*.test.tsx,**/ *.test.ts",
