@@ -7,7 +7,7 @@ on:
     paths-ignore:
       - "LICENCE"
       - "*.md"
-        
+
 jobs:
   run:
     name: Jobs
@@ -22,13 +22,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-        run: npm install
 
       - name: 3. Compile, Build and Test
         run: sh ./build.sh
 
       - name: 4. Code Analysis - White-box testing (SAST)
-        env: 
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
           SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
