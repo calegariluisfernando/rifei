@@ -64,4 +64,4 @@ jobs:
           CONTRAST_API_KEY: ${{ secrets.CONTRAST_API_KEY }}
           CONTRAST_SERVICE_KEY: ${{ secrets.CONTRAST_SERVICE_KEY }}
           CONTRAST_USER_NAME: ${{ secrets.CONTRAST_USER_NAME }}
-        run: ./package.sh
+        run: sh ./package.sh
