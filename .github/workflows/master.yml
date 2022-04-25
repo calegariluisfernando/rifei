@@ -24,8 +24,8 @@ jobs:
           node-version: 16
 
       - name: 2. Test
-        run: npm run test
-        
+        run: npm install; npm run test
+
       - name: 3. Code Analysis - White-box testing (SAST)
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
