@@ -22,6 +22,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+        run: npm install
 
       - name: 3. Compile, Build and Test
         run: sh ./build.sh
