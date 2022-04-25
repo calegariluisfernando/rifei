@@ -23,10 +23,10 @@ jobs:
         with:
           node-version: 16
 
-      - name: 2. Test
-        run: npm install; npm run test
+      - name: 3. Compile, Build and Test
+        run: sh ./build.sh
 
-      - name: 3. Code Analysis - White-box testing (SAST)
+      - name: 4. Code Analysis - White-box testing (SAST)
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
@@ -35,5 +35,10 @@ jobs:
           SONAR_URL: ${{ secrets.SONAR_URL }}
         run: sh ./codeAnalysis.sh
 
-      - name: 4. Compile, Build and Test
-        run: sh ./build.sh
+      - name: 5. Code Analysis - Quality Gate Checking
+        uses: jkumar19/sonar-build-breaker@v1.0.0
+        with:
+          sonar_branch: master
+          project_key: ${{ secrets.SONAR_PROJECT_KEY }}
+          sonar_token: ${{ secrets.SONAR_TOKEN }}
+          sonar_url: ${{ secrets.SONAR_URL }}
