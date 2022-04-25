@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
 
       - name: 2. Set up Snyk client
-        uses: snyk/actions/setup@mast
+        uses: snyk/actions/setup@master
 
       - name: 3. Set up Terraform client
         run: wget https://releases.hashicorp.com/terraform/1.0.8/terraform_1.0.8_linux_amd64.zip; unzip terraform_1.0.8_linux_amd64.zip; mv terraform ./iac; chmod +x ./iac/terraform; rm terraform_1.0.8_linux_amd64.zip;
