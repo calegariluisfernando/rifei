@@ -25,7 +25,7 @@ export default class CalegariLocalDataService implements ICalegariLocalDataServi
         return CalegariLocalDataService._instance;
     }
 
-    get(key: string): Object | null {
+    get(key: string): any | null {
 
         if (!key) {
 

@@ -10,7 +10,7 @@ export default class CalegariHttpClient implements ICalegariHttpClient {
 
         this._headers = new Headers();
 
-        if (process.env.hasOwnProperty('REACT_APP_API_CONTENT_TYPE_DEFAULT')
+        if (Object.prototype.hasOwnProperty.call(process.env, 'REACT_APP_API_CONTENT_TYPE_DEFAULT')
             && process.env.REACT_APP_API_CONTENT_TYPE_DEFAULT) {
 
             this._headers.append("Content-Type", process.env.REACT_APP_API_CONTENT_TYPE_DEFAULT);
@@ -30,12 +30,12 @@ export default class CalegariHttpClient implements ICalegariHttpClient {
         let newUrl = url;
         if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
 
-            let urlPars = url.split('?');
-            let stringParams = urlPars.length > 1 ? urlPars.pop() : undefined;
-            let searchParams = new URLSearchParams(stringParams);
+            const urlPars = url.split('?');
+            const stringParams = urlPars.length > 1 ? urlPars.pop() : undefined;
+            const searchParams = new URLSearchParams(stringParams);
 
-            if ((process.env.hasOwnProperty('REACT_APP_DEBUG_PARAM_NAME') && process.env.REACT_APP_DEBUG_PARAM_NAME)
-                && (process.env.hasOwnProperty('REACT_APP_DEBUG_PARAM_VALUE') && process.env.REACT_APP_DEBUG_PARAM_VALUE)) {
+            if ((Object.prototype.hasOwnProperty.call(process.env, 'REACT_APP_DEBUG_PARAM_NAME') && process.env.REACT_APP_DEBUG_PARAM_NAME)
+                && (Object.prototype.hasOwnProperty.call(process.env,'REACT_APP_DEBUG_PARAM_VALUE') && process.env.REACT_APP_DEBUG_PARAM_VALUE)) {
 
                 searchParams.append(
                     process.env.REACT_APP_DEBUG_PARAM_NAME,

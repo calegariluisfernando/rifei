@@ -1,3 +1,4 @@
+import React from "react";
 import { createContext, ReactNode, useContext, useState } from "react";
 import CalegariHttpClient from "../../services/HttpClients/CalegariHttpClient/CalegariHttpClient";
 import CalegariLocalDataService from "../../services/LocalData/CalegariLocalDataService/CalegariLocalDataService";
@@ -34,7 +35,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
         const client        = CalegariHttpClient.getInstance();
         const localService  = CalegariLocalDataService.getInstance();
 
-        let { statusCode, data } = await client.post(`/auth/login`, {
+        const { statusCode, data } = await client.post(`/auth/login`, {
             user    : login,
             password: pass
         });
@@ -57,12 +58,12 @@ function AuthProvider({ children }: { children: ReactNode }) {
         setUser({} as UserType);
     };
 
-    let value = { user, signin, signout };
+    const value = { user, signin, signout };
 
     return <AuthContext.Provider value={ value }>{ children }</AuthContext.Provider>;
 }
 
-function useAuth() {
+export function useAuth() {
 
     return useContext(AuthContext);
 }
