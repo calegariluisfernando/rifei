@@ -1,4 +1,4 @@
-import { ICalegariHttpClient } from "./ICalegariHttpClient";
+import { ICalegariHttpClient, ICalegariHttpResponse } from "./ICalegariHttpClient";
 
 export default class CalegariHttpClient implements ICalegariHttpClient {
 
@@ -75,14 +75,14 @@ export default class CalegariHttpClient implements ICalegariHttpClient {
         this.headers.append('Authorization', `Bearer ${token}`);
     }
 
-    get(url: string): Promise<string|JSON|null> {
+    get(url: string): Promise<ICalegariHttpResponse> {
 
         return fetch(CalegariHttpClient.buildQueryUrl(`${this.baseUrl}${url}`), { headers: this.headers })
             .then(res => CalegariHttpClient.handleErrors(res))
             .then(res => res.json());
     }
 
-    post(url: string, data: string|JSON|null): Promise<string|JSON|null> {
+    post(url: string, data: any): Promise<ICalegariHttpResponse> {
 
         const options = {
             headers: this.headers,
@@ -95,7 +95,7 @@ export default class CalegariHttpClient implements ICalegariHttpClient {
             .then(res => res.json());
     }
 
-    put(url: string, data: string|JSON|null): Promise<string|JSON|null> {
+    put(url: string, data: any): Promise<ICalegariHttpResponse> {
 
         const options = {
             headers: this.headers,
@@ -108,7 +108,7 @@ export default class CalegariHttpClient implements ICalegariHttpClient {
             .then(res => res.json());
     }
 
-    delete(url: string): Promise<string|JSON|null> {
+    delete(url: string): Promise<ICalegariHttpResponse> {
 
         const options = {
             headers: this.headers,

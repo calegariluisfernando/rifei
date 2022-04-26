@@ -3,23 +3,23 @@ import CalegariHttpClient from "../../services/HttpClients/CalegariHttpClient/Ca
 import CalegariLocalDataService from "../../services/LocalData/CalegariLocalDataService/CalegariLocalDataService";
 
 export interface UserType {
-    id                  : number,
-    firstName           : string,
-    lastName            : string,
-    email               : string,
-    login               : string,
-    password?           : string,
-    avatar?             : string,
-    created?            : Date,
-    tokenCreatedAt      : Date,
-    tokenExpirationAt   : Date,
-    token               : string
+    id: number,
+    firstName: string,
+    lastName: string,
+    email: string,
+    login: string,
+    password?: string,
+    avatar?: string,
+    created?: Date,
+    tokenCreatedAt: Date,
+    tokenExpirationAt: Date,
+    token: string
 }
 
 export interface AuthContextType {
-    user        : UserType;
-    signin      : (user: string, pass: string) => Promise<void>;
-    signout     : () => void;
+    user: UserType;
+    signin: (user: string, pass: string) => Promise<void>;
+    signout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
@@ -30,20 +30,26 @@ function AuthProvider({ children }: { children: ReactNode }) {
 
     const signin = async (login: string, pass: string): Promise<void> => {
 
-        let userLogin       = {} as UserType;
-        const client        = CalegariHttpClient.getInstance();
-        const localService  = CalegariLocalDataService.getInstance();
+        let userLogin = {} as UserType;
+        const client = CalegariHttpClient.getInstance();
+        const localService = CalegariLocalDataService.getInstance();
 
         const { statusCode, data } = await client.post(`/auth/login`, {
-            user    : login,
+            user: login,
             password: pass
         });
 
+        let dataResponse = {} as { user: UserType };
+        if (data) {
+
+            dataResponse = JSON.parse(data);
+        }
+
         if (statusCode >= 200 && statusCode <= 299) {
 
-            userLogin   = data.user;
+            userLogin = dataResponse.user;
 
-            client.setToken(userLogin.token );
+            client.setToken(userLogin.token);
             localService.insert('user', userLogin);
 
             setUser(userLogin);
@@ -59,7 +65,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
 
     const value = { user, signin, signout };
 
-    return <AuthContext.Provider value={ value }>{ children }</AuthContext.Provider>;
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
@@ -85,5 +91,5 @@ function isAnUserType(obj: UserType): boolean {
     return 'id' in obj && 'firstName' in obj && 'lastName' in obj
         && 'email' in obj && 'login' in obj && 'tokenCreatedAt' in obj
         && 'tokenExpirationAt' in obj && 'token' in obj
-    ;
+        ;
 }

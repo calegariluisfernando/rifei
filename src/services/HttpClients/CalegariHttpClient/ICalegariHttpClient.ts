@@ -1,6 +1,11 @@
+export interface ICalegariHttpResponse {
+    statusCode: number,
+    data: string
+}
+
 export interface ICalegariHttpClient {
-    get: (url: string) => Promise<string|JSON|null>,
-    post: (url: string, data: string|JSON|null) => Promise<string|JSON|null>,
-    put: (url: string, data: string|JSON|null) => Promise<string|JSON|null>,
-    delete: (url: string) => Promise<string|JSON|null>
+    get: (url: string) => Promise<ICalegariHttpResponse>,
+    post: (url: string, data: any) => Promise<ICalegariHttpResponse>,
+    put: (url: string, data: any) => Promise<ICalegariHttpResponse>,
+    delete: (url: string) => Promise<ICalegariHttpResponse>
 }
