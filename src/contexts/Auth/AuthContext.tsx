@@ -1,5 +1,4 @@
-import React from "react";
-import { createContext, ReactNode, useContext, useState } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 import CalegariHttpClient from "../../services/HttpClients/CalegariHttpClient/CalegariHttpClient";
 import CalegariLocalDataService from "../../services/LocalData/CalegariLocalDataService/CalegariLocalDataService";
 
@@ -81,7 +80,7 @@ function getUserLocal(): UserType {
     return user;
 }
 
-function isAnUserType(obj: any): obj is UserType {
+function isAnUserType(obj: UserType): boolean {
 
     return 'id' in obj && 'firstName' in obj && 'lastName' in obj
         && 'email' in obj && 'login' in obj && 'tokenCreatedAt' in obj
