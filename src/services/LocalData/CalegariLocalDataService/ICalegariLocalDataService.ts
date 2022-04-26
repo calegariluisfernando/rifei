@@ -1,6 +1,6 @@
 export interface ICalegariLocalDataService {
 
-    get(key: string): any|null;
-    insert(key: string, value: any): void;
+    get(key: string): string|JSON|null;
+    insert(key: string, value: JSON): void;
     delete(key: string): void;
 }

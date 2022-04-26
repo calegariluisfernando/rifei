@@ -75,7 +75,7 @@ export default class CalegariHttpClient implements ICalegariHttpClient {
         this.headers.append('Authorization', `Bearer ${token}`);
     }
 
-    get(url: string|JSON|null): Promise<string|JSON|null> {
+    get(url: string): Promise<string|JSON|null> {
 
         return fetch(CalegariHttpClient.buildQueryUrl(`${this.baseUrl}${url}`), { headers: this.headers })
             .then(res => CalegariHttpClient.handleErrors(res))
