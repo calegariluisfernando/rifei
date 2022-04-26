@@ -2,8 +2,7 @@ version: '3.8'
 
 services:
   frontend:
-    build:
-      context: ../
+    build: ../
     image: ${REPOSITORY_URL}/${REPOSITORY_ID}/rifei-frontend:latest
     container_name: rifei-frontend
     hostname: rifei-frontend
