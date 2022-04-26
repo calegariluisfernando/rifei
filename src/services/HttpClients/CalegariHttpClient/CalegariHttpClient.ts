@@ -75,14 +75,14 @@ export default class CalegariHttpClient implements ICalegariHttpClient {
         this.headers.append('Authorization', `Bearer ${token}`);
     }
 
-    get(url: string): Promise<any> {
+    get(url: string|JSON|null): Promise<string|JSON|null> {
 
         return fetch(CalegariHttpClient.buildQueryUrl(`${this.baseUrl}${url}`), { headers: this.headers })
             .then(res => CalegariHttpClient.handleErrors(res))
             .then(res => res.json());
     }
 
-    post(url: string, data: any): Promise<any> {
+    post(url: string, data: string|JSON|null): Promise<string|JSON|null> {
 
         const options = {
             headers: this.headers,
@@ -95,7 +95,7 @@ export default class CalegariHttpClient implements ICalegariHttpClient {
             .then(res => res.json());
     }
 
-    put(url: string, data: any): Promise<any> {
+    put(url: string, data: string|JSON|null): Promise<string|JSON|null> {
 
         const options = {
             headers: this.headers,
@@ -108,7 +108,7 @@ export default class CalegariHttpClient implements ICalegariHttpClient {
             .then(res => res.json());
     }
 
-    delete(url: string): Promise<any> {
+    delete(url: string): Promise<string|JSON|null> {
 
         const options = {
             headers: this.headers,

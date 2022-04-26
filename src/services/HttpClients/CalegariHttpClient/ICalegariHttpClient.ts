@@ -1,6 +1,6 @@
 export interface ICalegariHttpClient {
-    get: (url: string) => Promise<any>,
-    post: (url: string, data: any) => Promise<any>,
-    put: (url: string, data: any) => Promise<any>,
-    delete: (url: string) => Promise<any>
+    get: (url: string) => Promise<string|JSON|null>,
+    post: (url: string, data: string|JSON|null) => Promise<string|JSON|null>,
+    put: (url: string, data: string|JSON|null) => Promise<string|JSON|null>,
+    delete: (url: string) => Promise<string|JSON|null>
 }
