@@ -5,7 +5,7 @@ export interface ICalegariHttpResponse {
 
 export interface ICalegariHttpClient {
     get: (url: string) => Promise<ICalegariHttpResponse>,
-    post: (url: string, data: any) => Promise<ICalegariHttpResponse>,
-    put: (url: string, data: any) => Promise<ICalegariHttpResponse>,
+    post: (url: string, data: JSON) => Promise<ICalegariHttpResponse>,
+    put: (url: string, data: JSON) => Promise<ICalegariHttpResponse>,
     delete: (url: string) => Promise<ICalegariHttpResponse>
 }

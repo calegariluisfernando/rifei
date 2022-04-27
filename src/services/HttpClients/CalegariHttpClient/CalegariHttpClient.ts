@@ -82,7 +82,7 @@ export default class CalegariHttpClient implements ICalegariHttpClient {
             .then(res => res.json());
     }
 
-    post(url: string, data: any): Promise<ICalegariHttpResponse> {
+    post(url: string, data: JSON): Promise<ICalegariHttpResponse> {
 
         const options = {
             headers: this.headers,
@@ -95,7 +95,7 @@ export default class CalegariHttpClient implements ICalegariHttpClient {
             .then(res => res.json());
     }
 
-    put(url: string, data: any): Promise<ICalegariHttpResponse> {
+    put(url: string, data: JSON): Promise<ICalegariHttpResponse> {
 
         const options = {
             headers: this.headers,
