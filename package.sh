@@ -17,10 +17,12 @@ echo "REPOSITORY_ID=$REPOSITORY_ID" >> ./iac/.env
 # Build docker images.
 docker-compose -f ./iac/docker-compose.yml build
 
+ls /tmp -lsah
+
+docker save $REPOSITORY_ID/rifei-frontend:latest -o /tmp/rifei-frontend:latest.tar
+
 # Save images locally.
 rm -f /tmp/rifei-*.tar
-
-docker save $REPOSITORY_ID/rifei-frontend:latest -o /tmp/rifei-frontend.tar
 
 # Clean temporary files.
 #rm $ETC_DIR/contrast_security.yaml
