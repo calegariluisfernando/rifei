@@ -1,8 +1,9 @@
-version: '3.9'
+version: '3.8'
 
 services:
   frontend:
-    build: ./Dockerfile
+    build: 
+        context: ./
     image: ${REPOSITORY_URL}/${REPOSITORY_ID}/rifei-frontend:latest
     container_name: rifei-frontend
     hostname: rifei-frontend
