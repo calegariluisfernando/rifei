@@ -82,12 +82,12 @@ export default class CalegariHttpClient implements ICalegariHttpClient {
             .then(res => res.json());
     }
 
-    post(url: string, data: JSON): Promise<ICalegariHttpResponse> {
+    post(url: string, data: string): Promise<ICalegariHttpResponse> {
 
         const options = {
             headers: this.headers,
             method: 'post',
-            body: JSON.stringify(data)
+            body: data
         };
 
         return fetch(CalegariHttpClient.buildQueryUrl(`${this.baseUrl}${url}`), options)
@@ -95,12 +95,12 @@ export default class CalegariHttpClient implements ICalegariHttpClient {
             .then(res => res.json());
     }
 
-    put(url: string, data: JSON): Promise<ICalegariHttpResponse> {
+    put(url: string, data: string): Promise<ICalegariHttpResponse> {
 
         const options = {
             headers: this.headers,
             method: 'put',
-            body: JSON.stringify(data)
+            body: data
         };
 
         return fetch(CalegariHttpClient.buildQueryUrl(`${this.baseUrl}${url}`), options)

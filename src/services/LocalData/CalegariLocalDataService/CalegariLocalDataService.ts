@@ -25,7 +25,7 @@ export default class CalegariLocalDataService implements ICalegariLocalDataServi
         return CalegariLocalDataService._instance;
     }
 
-    get(key: string): any {
+    get(key: string): string|null {
 
         if (!key) {
 
@@ -33,10 +33,10 @@ export default class CalegariLocalDataService implements ICalegariLocalDataServi
         }
 
         const item = localStorage.getItem(key);
-        return item ? JSON.parse(item) : null;
+        return item || null;
     }
 
-    insert(key: string, value: any): void {
+    insert(key: string, value: string): void {
 
         if (!key || !value) {
 

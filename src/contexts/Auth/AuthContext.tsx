@@ -34,10 +34,12 @@ function AuthProvider({ children }: { children: ReactNode }) {
         const client = CalegariHttpClient.getInstance();
         const localService = CalegariLocalDataService.getInstance();
 
-        const { statusCode, data } = await client.post(`/auth/login`, {
+        const params = {
             user: login,
             password: pass
-        });
+        };
+
+        const { statusCode, data } = await client.post(`/auth/login`, JSON.stringify(params));
 
         let dataResponse = {} as { user: UserType };
         if (data) {
@@ -50,7 +52,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
             userLogin = dataResponse.user;
 
             client.setToken(userLogin.token);
-            localService.insert('user', userLogin);
+            localService.insert('user', JSON.stringify(userLogin));
 
             setUser(userLogin);
         }
@@ -76,9 +78,15 @@ export function useAuth() {
 function getUserLocal(): UserType {
 
     const localService = CalegariLocalDataService.getInstance();
-    let user = localService.get('user') as UserType;
+    const localUser = localService.get('user');
+    let user = {} as UserType;
 
-    if (!isAnUserType(user)) {
+    if (localUser) {
+
+        user = JSON.parse(localUser) as UserType;
+    }
+
+    if (!localUser || !isAnUserType(user)) {
 
         user = {} as UserType;
     }
