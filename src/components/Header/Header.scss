@@ -1,0 +1,11 @@
+.header-page {
+    position: relative;
+
+    background-color: #fff;
+
+    border-bottom: 1px solid var(--borderColor);
+    padding: 8px;
+    min-height: 57px;
+
+    z-index: 200;
+}

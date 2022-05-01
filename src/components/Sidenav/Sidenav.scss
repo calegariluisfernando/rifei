@@ -1,0 +1,134 @@
+.sidenav {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 100%;
+
+    z-index: 100;
+    transition-property: z-index;
+    transition-delay: 0.25s;
+
+    .overlay-sidenav {
+        display: none;
+
+        width: 100%;
+        height: 100%;
+
+        background-color: transparent;
+    }
+
+    .sidenav-content {
+        position: absolute;
+
+        background-color: var(--sidenav-content-bg);
+        box-shadow: none;
+
+        top: 0;
+        left: -250px;
+
+        height: 100%;
+        width: 250px;
+
+        .sidenav-header {
+            position: relative;
+
+            .sidenav-close {
+                position: absolute;
+                right: 0;
+                color: #fff;
+
+                &:focus,
+                &:focus-within {
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+
+            .sidenav-logo,
+            .sidenav-user-data {
+                min-height: 57px;
+                border-bottom: 1px solid var(--borderColor);
+            }
+
+            .sidenav-logo {
+                display: flex;
+
+                font-family: "Roboto", sans-serif;
+                font-weight: 700;
+
+                text-transform: uppercase;
+
+                .wrap-logo-sidenav {
+                    display: flex;
+                    align-items: center;
+
+                    padding: 0 7.5px;
+                    width: 100%;
+
+                    > {
+                        img {
+                            margin-right: 0.5rem;
+                            max-width: 50px;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+
+            .sidenav-user-data {
+                display: flex;
+                align-items: center;
+
+                .wrap-user-data-sidenav {
+                    display: flex;
+                    align-items: center;
+
+                    padding: 0 7.5px;
+                    color: darkgray;
+
+                    .img-avatar {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        overflow: hidden;
+
+                        width: 40px;
+                        height: 40px;
+
+                        background-color: #fff;
+                        border: 1px solid var(--borderColor);
+
+                        margin-right: 0.75rem;
+                    }
+
+                    .user-data-name {
+                        color: white;
+                    }
+                }
+            }
+
+            .sidenav-list-itens {
+                padding: 0 7.5px;
+            }
+        }
+
+        transition: all 0.25s linear;
+    }
+
+    &.isOpen {
+        z-index: 300;
+        transition-delay: 0s;
+
+        .overlay-sidenav {
+            display: block;
+        }
+
+        .sidenav-content {
+            left: 0;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+    }
+}

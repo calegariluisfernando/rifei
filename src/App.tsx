@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import NoMatch from './pages/NoMatch/NoMatch';
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import LoadingProvider from "./contexts/Loading/LoadingContext";
+import Layout from './components/Layout/Layout';
+
+export default function App() {
+
+    return (
+        <LoadingProvider>
+            <Routes>
+                <Route index element={<Home />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/' element={<Layout />} >
+                    <Route
+                        path="dashboard"
+                        element={<PrivateRoute><Dashboard /></PrivateRoute>}
+                    />
+                </Route>
+
+                <Route path="*" element={<NoMatch />} />
+            </Routes>
+        </LoadingProvider>
+    );
 }
-
-export default App;

@@ -1,0 +1,116 @@
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.WrapCLoading {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .CLoadingBackground {
+        background-color: rgba(0, 0, 0, 0.3);
+
+        width: 100%;
+        height: 100vh;
+
+        position: absolute;
+
+        z-index: 100;
+    }
+
+    .CLoadingContent {
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        background-color: white;
+        border-radius: 50%;
+        padding: 42px;
+
+        width: 200px;
+        height: 200px;
+
+        z-index: 500;
+
+        .CLoadingRingRotation {
+            position: absolute;
+            border-radius: 50%;
+
+            top: 0;
+            left: 0;
+
+            border: 3px solid #000000;
+
+            animation-name: spinner;
+            animation-duration: 3s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+
+            &.CLoadingRing-1 {
+                border-color: rgba(13, 110, 253, 0.6);
+                border-right-color: transparent;
+                border-left-color: transparent;
+
+                width: 100%;
+                height: 100%;
+
+                animation-duration: 3s;
+                animation-timing-function: linear;
+            }
+
+            &.CLoadingRing-2 {
+                border-color: rgba(13, 110, 253, 1);
+                border-top-color: transparent;
+                border-bottom-color: transparent;
+
+                width: calc(100% - 14px);
+                height: calc(100% - 14px);
+
+                top: 7px;
+                left: 7px;
+
+                animation-duration: 1.5s;
+            }
+
+            &.CLoadingRing-3 {
+                border-color: rgba(13, 110, 253, 0.4);
+                border-right-color: transparent;
+                border-left-color: transparent;
+
+                width: calc(100% - 28px);
+                height: calc(100% - 28px);
+
+                top: 14px;
+                left: 14px;
+
+                animation-duration: 2s;
+            }
+        }
+
+        .CLoadingImgLogo {
+            max-width: 80px;
+        }
+
+        .CLoadingMessage {
+            text-transform: uppercase;
+        }
+    }
+}

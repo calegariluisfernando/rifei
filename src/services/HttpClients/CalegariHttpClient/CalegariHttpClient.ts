@@ -1,6 +1,6 @@
 import { ICalegariHttpClient, ICalegariHttpResponse } from "./ICalegariHttpClient";
 
-export default class CalegariHttpClient implements ICalegariHttpClient {
+class CalegariHttpClient implements ICalegariHttpClient {
 
     private static _instance: CalegariHttpClient;
     private readonly _headers: Headers;
@@ -120,3 +120,5 @@ export default class CalegariHttpClient implements ICalegariHttpClient {
             .then(res => res.json());
     }
 }
+
+export default CalegariHttpClient;

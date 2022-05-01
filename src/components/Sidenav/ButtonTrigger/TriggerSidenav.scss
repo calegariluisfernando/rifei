@@ -1,0 +1,22 @@
+.menu-actions {
+    > {
+        img {
+            max-width: 50px;
+            height: auto;
+        }
+    }
+
+    .btn-trigger-sidenav {
+        opacity: 0.7;
+
+        &:focus,
+        &:focus-within {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

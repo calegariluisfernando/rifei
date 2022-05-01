@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+html,
+body,
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+:root {
+
+    --appBackgroundColor: #f4f6f9;
+    --borderColor: #dee2e6;
+
+    // Sidenav
+    --sidenav-content-bg: #4b545c;
+}
