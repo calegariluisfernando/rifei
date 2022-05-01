@@ -24,10 +24,5 @@ rm -f /tmp/rifei-*.tar
 
 docker save $REPOSITORY_ID/rifei-frontend:latest -o /tmp/rifei-frontend.tar
 
-echo "o que tem na /tmp"
-echo "o que tem na /tmp"
-echo "o que tem na /tmp"
-echo "o que tem na /tmp"
-ls /tmp/*.tar
 # Clean temporary files.
 #rm $ETC_DIR/contrast_security.yaml
