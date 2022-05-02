@@ -1,6 +1,4 @@
-import React from "react";
-
-import { createContext, ReactNode, useContext, useState } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 import Loading from "../../components/Loading/Loading";
 
 interface LoadingType {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
@@ -13,18 +13,20 @@ export default function App(): JSX.Element {
 
     return (
         <LoadingProvider>
-            <Routes>
-                <Route index element={<Home />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/' element={<Layout />} >
-                    <Route
-                        path="dashboard"
-                        element={<PrivateRoute><Dashboard /></PrivateRoute>}
-                    />
-                </Route>
+            <BrowserRouter>
+                <Routes>
+                    <Route index element={<Home />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/' element={<Layout />} >
+                        <Route
+                            path="dashboard"
+                            element={<PrivateRoute><Dashboard /></PrivateRoute>}
+                        />
+                    </Route>
 
-                <Route path="*" element={<NoMatch />} />
-            </Routes>
+                    <Route path="*" element={<NoMatch />} />
+                </Routes>
+            </BrowserRouter>
         </LoadingProvider>
     );
 }
