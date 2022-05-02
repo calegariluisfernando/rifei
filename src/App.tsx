@@ -9,7 +9,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import LoadingProvider from "./contexts/Loading/LoadingContext";
 import Layout from './components/Layout/Layout';
 
-export default function App() {
+export default function App(): JSX.Element {
 
     return (
         <LoadingProvider>

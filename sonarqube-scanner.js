@@ -1,13 +1,13 @@
 const scanner = require('sonarqube-scanner');
 
 scanner({
-    serverUrl: `${process.env.SONAR_URL}`,
-    token: `${process.env.SONAR_TOKEN}`,
+    serverUrl: `https://sonarcloud.io`,
+    token: `b537e6b0aebdc140db245248ca80fa6ce051e544`,
     options: {
-        "sonar.sources": "./src",
-        "sonar.organization": `${process.env.SONAR_ORGANIZATION}`,
-        "sonar.projectKey": `${process.env.SONAR_PROJECT_KEY}`,
+        "sonar.organization": `calegariluisfernando`,
+        "sonar.projectKey": `calegariluisfernando_rifei-frontend`,
         "sonar.exclusions": "**/*.test.tsx",
+        "sonar.sources": "./src",
         "sonar.tests": "./src",
         "sonar.test.inclusions": "**/*.test.tsx,**/ *.test.ts",
         "sonar.typescript.lcov.reportPaths": "coverage/lcov.info",
